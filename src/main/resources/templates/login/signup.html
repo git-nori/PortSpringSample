@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>SignUp</title>
+	</head>
+	<body>
+		<h1>ユーザー登録画面</h1>
+		<form method="post" th:action="@{/signup}">
+			<table>
+				<tr>
+					<th>ユーザーID</th>
+					<td>
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td>
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<th>ユーザー名</th>
+					<td>
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<th>誕生日</th>
+					<td>
+						<input type="text" placeholder="yyy/mm/dd" />
+					</td>
+				</tr>
+				<tr>
+					<th>年齢</th>
+					<td>
+						<input type="text" />
+					</td>
+				</tr>
+				<tr>
+					<th>結婚</th>
+					<td>
+						<div th:each="item : ${radioMarriage}">
+							<input type="radio" name="radioMarriage" th:text="${item.key}" th:value="${item.value}" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<button type="submit">ユーザー登録</button>
+		</form>
+	</body>
+</html>
