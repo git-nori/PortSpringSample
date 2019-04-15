@@ -6,44 +6,55 @@
 	</head>
 	<body>
 		<h1>ユーザー登録画面</h1>
-		<form method="post" th:action="@{/signup}">
+		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
 			<table>
 				<tr>
 					<th>ユーザーID</th>
 					<td>
-						<input type="text" />
+						<input type="text" th:field="*{userId}" />
+						<br />
+						<span th:if="${#fields.hasErrors('*{userId}')}" th:errors="*{userId}">userId error</span>
 					</td>
 				</tr>
 				<tr>
 					<th>パスワード</th>
 					<td>
-						<input type="text" />
+						<input type="text" th:field="*{password}" />
+						<br />
+						<span th:if="${#fields.hasErrors('*{password}')}" th:errors="*{password}">password error</span>
 					</td>
 				</tr>
 				<tr>
 					<th>ユーザー名</th>
 					<td>
-						<input type="text" />
+						<input type="text" th:field="*{userName}" />
+						<br />
+						<span th:if="${#fields.hasErrors('*{userName}')}" th:errors="*{userName}">userName error</span>
 					</td>
 				</tr>
 				<tr>
 					<th>誕生日</th>
 					<td>
-						<input type="text" placeholder="yyy/mm/dd" />
+						<input type="text" placeholder="yyy/mm/dd" th:field="*{birthday}" />
+						<br />
+						<span th:if="${#fields.hasErrors('*{birthday}')}" th:errors="*{birthday}">birthday error</span>
 					</td>
 				</tr>
 				<tr>
 					<th>年齢</th>
 					<td>
-						<input type="text" />
+						<input type="text" th:field="*{age}" />
+						<br />
+						<span th:if="${#fields.hasErrors('*{age}')}" th:errors="*{age}">age error</span>
 					</td>
 				</tr>
 				<tr>
 					<th>結婚</th>
 					<td>
 						<div th:each="item : ${radioMarriage}">
-							<input type="radio" name="radioMarriage" th:text="${item.key}" th:value="${item.value}" />
+							<input type="radio" name="radioMarriage" th:text="${item.key}" th:value="${item.value}" th:field="*{marriage}" />
 						</div>
+						<span th:if="${#fields.hasErrors('*{marriage}')}" th:errors="*{marriage}">marriage error</span>
 					</td>
 				</tr>
 			</table>
