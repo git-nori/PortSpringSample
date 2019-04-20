@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div th:fragment="userList_contents">
+			<h1>ユーザー一覧</h1>
+			<table>
+				<tr>
+					<th>ユーザーID</th>
+					<th>ユーザー名</th>
+					<th>誕生日</th>
+					<th>年齢</th>
+					<th>結婚</th>
+				</tr>
+				<tr th:each="user : ${userList}">
+					<td th:text="${user.userId}"></td>
+					<td th:text="${user.userName}"></td>
+					<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
+					<td th:text="${user.age}"></td>
+					<td th:text="${user.marriage} ? '既婚' : '未婚'"></td>
+					<td>
+						<a th:href="@{'/userDetail/' + ${user.userId}}">詳細</a>
+					</td>
+				</tr>
+			</table>
+			<label th:text="'合計 : ' + ${userListCount} + '件'"></label><br /><br />
+			<label th:text="${result}">結果表示</label>
+		</div>
+	</body>
+</html>
