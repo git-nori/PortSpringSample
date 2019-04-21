@@ -43,6 +43,7 @@ public class UserDaoJdbcImpl implements UserDao{
                 , user.getUserName()
                 , user.getBirthday()
                 , user.getAge()
+                , user.isMarriage()
                 , user.getRole());
 
         return rowNumber;
