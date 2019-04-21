@@ -62,6 +62,10 @@
 			<artifactId>jquery</artifactId>
 			<version>1.11.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
