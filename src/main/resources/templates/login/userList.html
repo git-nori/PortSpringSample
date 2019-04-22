@@ -11,16 +11,12 @@
 				<tr>
 					<th>ユーザーID</th>
 					<th>ユーザー名</th>
-					<th>誕生日</th>
-					<th>年齢</th>
-					<th>結婚</th>
+					<th>性別</th>
 				</tr>
 				<tr th:each="user : ${userList}">
 					<td th:text="${user.userId}"></td>
 					<td th:text="${user.userName}"></td>
-					<td th:text="${#dates.format(user.birthday, 'yyyy/MM/dd')}"></td>
-					<td th:text="${user.age}"></td>
-					<td th:text="${user.marriage} ? '既婚' : '未婚'"></td>
+					<td th:text="${user.gender} ? '男性' : '女性'"></td>
 					<td>
 						<a th:href="@{'/userDetail/' + ${user.userId}}">詳細</a>
 					</td>
