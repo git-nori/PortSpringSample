@@ -38,18 +38,14 @@ public class UserDaoJdbcImpl implements UserDao{
                 + " user_id,"
                 + " password,"
                 + " user_name,"
-                + " birthday,"
-                + " age,"
-                + " marriage,"
+                + " gender,"
                 + " role)"
-                + " VALUES(?, ?, ?, ?, ?, ?, ?)";
+                + " VALUES(?, ?, ?, ?, ?)";
         int rowNumber = jdbc.update(sql
                 , user.getUserId()
                 , password
                 , user.getUserName()
-                , user.getBirthday()
-                , user.getAge()
-                , user.isMarriage()
+                , user.isGender()
                 , user.getRole());
 
         return rowNumber;
@@ -78,16 +74,12 @@ public class UserDaoJdbcImpl implements UserDao{
         String sql = "UPDATE m_user SET"
                 + " password = ?,"
                 + " user_name = ?,"
-                + " birthday = ?,"
-                + " age = ?,"
-                + " marriage = ?"
+                + " gender = ?"
                 + " WHERE user_id = ?";
         int rowNumber = jdbc.update(sql
                 , password
                 , user.getUserName()
-                , user.getBirthday()
-                , user.getAge()
-                , user.isMarriage()
+                , user.isGender()
                 , user.getUserId());
 
         return rowNumber;
