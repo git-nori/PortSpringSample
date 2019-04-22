@@ -23,13 +23,13 @@ public class HomeController {
     @Autowired
     UserService userService;
 
-    private Map<String, String> radioMarriage;
+    private Map<String, String> radioGender;
 
-    private Map<String, String> initRadioMarriage(){
+    private Map<String, String> initRadioGender(){
         Map<String, String> radio = new LinkedHashMap<String, String>();
 
-        radio.put("既婚", "true");
-        radio.put("未婚", "false");
+        radio.put("男性", "true");
+        radio.put("女性", "false");
 
         return radio;
     }
@@ -50,13 +50,11 @@ public class HomeController {
 
     @GetMapping("/userList")
     public String getUserList(Model model) {
-        model.addAttribute("contents", "login/userList :: userList_contents");
-
         List<User> userList = userService.selectMany();
-
-        model.addAttribute("userList", userList);
-
         int count = userService.count();
+
+        model.addAttribute("contents", "login/userList :: userList_contents");
+        model.addAttribute("userList", userList);
         model.addAttribute("userListCount", count);
 
         return "login/homeLayout";
@@ -66,19 +64,17 @@ public class HomeController {
     public String getUserDetail(@ModelAttribute SignupForm form, Model model, @PathVariable("id")String userId) {
         System.out.println("userId = " + userId);
 
-        radioMarriage = initRadioMarriage();
+        radioGender = initRadioGender();
 
+        model.addAttribute("radioGender", radioGender);
         model.addAttribute("contents", "login/userDetail :: userDetail_contents");
-        model.addAttribute("radioMarriage", radioMarriage);
 
         if (userId != null && userId.length() > 0) {
             User user = userService.selectOne(userId);
 
             form.setUserId(user.getUserId());
             form.setUserName(user.getUserName());
-            form.setBirthday(user.getBirthday());
-            form.setAge(user.getAge());
-            form.setMarriage(user.isMarriage());
+            form.setGender(user.isGender());
 
             model.addAttribute("signupForm", form);
         }
@@ -95,9 +91,7 @@ public class HomeController {
         user.setUserId(form.getUserId());
         user.setPassword(form.getPassword());
         user.setUserName(form.getUserName());
-        user.setBirthday(form.getBirthday());
-        user.setAge(form.getAge());
-        user.setMarriage(form.isMarriage());
+        user.setGender(form.isGender());
 
         try {
             boolean result = userService.updateOne(user);
