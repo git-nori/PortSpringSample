@@ -22,14 +22,14 @@ public class SignupController {
     @Autowired
     private UserService userService;
 
-    private Map<String, String> radioMarriage;
+    private Map<String, String> radioGender;
 
-    private Map<String, String> initRadioMarriage(){
+    private Map<String, String> initRadioGender(){
 
         Map<String, String> radio = new LinkedHashMap<>();
 
-        radio.put("既婚", "true");
-        radio.put("未婚", "false");
+        radio.put("男性", "true");
+        radio.put("女性", "false");
 
         return radio;
     }
@@ -37,9 +37,9 @@ public class SignupController {
     @GetMapping("/signup")
     public String getSignUp(@ModelAttribute SignupForm form, Model model) {
 
-        radioMarriage = initRadioMarriage();
+        radioGender = initRadioGender();
 
-        model.addAttribute("radioMarriage", radioMarriage);
+        model.addAttribute("radioGender", radioGender);
 
         return "login/signup";
     }
@@ -58,9 +58,7 @@ public class SignupController {
         user.setUserId(form.getUserId());
         user.setPassword(form.getPassword());
         user.setUserName(form.getUserName());
-        user.setBirthday(form.getBirthday());
-        user.setAge(form.getAge());
-        user.setMarriage(form.isMarriage());
+        user.setGender(form.isGender());
         user.setRole("ROLE_GENERAL");//一般用ロール
 
         boolean result = userService.insert(user);
