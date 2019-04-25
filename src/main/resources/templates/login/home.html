@@ -6,7 +6,14 @@
 	</head>
 	<body>
 		<div th:fragment="home_contents">
-			<h1>ホーム</h1>
+			<h1>記事一覧</h1>
+			<ol>
+				<li th:each="article : ${articles}">
+					<h2>
+						<a th:text="${article.title}" th:href="@{'/articleDetail/' + ${article.id}}">Title</a>
+					</h2>
+				</li>
+			</ol>
 		</div>
 	</body>
 </html>
