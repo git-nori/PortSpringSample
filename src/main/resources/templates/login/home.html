@@ -9,11 +9,12 @@
 			<h1>記事一覧</h1>
 			<ol>
 				<li th:each="article : ${articles}">
-					<h2>
-						<a th:text="${article.title}" th:href="@{'/articleDetail/' + ${article.id}}">Title</a>
-					</h2>
+					<h3>
+						<a th:text="${article.title}" th:href="@{'/articleDetail/' + ${article.id}}">Title</a><br />
+					</h3>
 				</li>
 			</ol>
+			<label th:text="'総記事件数 : ' + ${count} + '件'"></label><br /><br />
 		</div>
 	</body>
 </html>

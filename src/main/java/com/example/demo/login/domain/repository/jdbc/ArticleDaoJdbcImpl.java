@@ -20,14 +20,14 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
 
     @Override
     public int count() throws DataAccessException {
-        String sql = "SELECT COUNT(*) FROM article";
+        String sql = "SELECT COUNT(*) FROM articles";
         int count = jdbc.queryForObject(sql, Integer.class);
         return count;
     }
 
     @Override
     public int insertOne(Article article) throws DataAccessException {
-        String sql = "INSERT INTO article("
+        String sql = "INSERT INTO articles("
                 + " user_id,"
                 + " title,"
                 + " content)"
@@ -42,21 +42,21 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
 
     @Override
     public Article selectOne(int id) throws DataAccessException {
-        String sql = "SELECT * FROM article WHERE id = ?";
+        String sql = "SELECT * FROM articles WHERE id = ?";
         RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
         return jdbc.queryForObject(sql, rowMapper, id);
     }
 
     @Override
     public List<Article> selectMany() throws DataAccessException {
-        String sql = "SELECT * FROM article";
+        String sql = "SELECT * FROM articles";
         RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
         return jdbc.query(sql, rowMapper);
     }
 
     @Override
     public int updateOne(Article article) throws DataAccessException {
-        String sql = "UPDATE article SET"
+        String sql = "UPDATE articles SET"
                 + "title = ?,"
                 + " content = ?"
                 + " WHERE id = ?";
@@ -67,7 +67,7 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
 
     @Override
     public int deleteOne(int id) throws DataAccessException {
-        String sql = "DELETE FROM article WHERE id = ?";
+        String sql = "DELETE FROM articles WHERE id = ?";
         int rowNumber = jdbc.update(sql, id);
         return rowNumber;
     }
