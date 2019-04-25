@@ -7,10 +7,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.login.domain.model.Article;
 import com.example.demo.login.domain.repository.ArticleDao;
 
+@Repository
 public class ArticleDaoJdbcImpl implements ArticleDao{
 
     @Autowired
