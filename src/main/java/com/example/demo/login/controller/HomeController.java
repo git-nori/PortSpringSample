@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.login.domain.model.Article;
 import com.example.demo.login.domain.model.SignupForm;
 import com.example.demo.login.domain.model.User;
+import com.example.demo.login.domain.service.ArticleService;
 import com.example.demo.login.domain.service.UserService;
 
 @Controller
@@ -22,6 +24,9 @@ public class HomeController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ArticleService articleService;
 
     private Map<String, String> radioGender;
 
@@ -37,6 +42,11 @@ public class HomeController {
     @GetMapping("/home")
     public String getHome(Model model) {
 
+        List<Article> articleList = articleService.selectMany();
+        int count = articleService.count();
+
+        model.addAttribute("articles", articleList);
+        model.addAttribute("count", count);
         model.addAttribute("contents", "login/home :: home_contents");
 
         return "login/homeLayout";
