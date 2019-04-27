@@ -77,4 +77,19 @@ public class ArticleController {
 
         return getArticleDetail(model, form.getId());
     }
+
+    @PostMapping(value="/articleEdit", params="delete")
+    public String postArticleEditDelete(@ModelAttribute ArticleForm form, Model model) {
+        System.out.println("記事削除処理");
+
+        boolean result = articleService.delete(form.getId());
+
+        if (result == true) {
+            model.addAttribute("result", "記事削除成功");
+        } else {
+            model.addAttribute("result", "記事削除失敗");
+        }
+
+        return "forward:/home";
+    }
 }
