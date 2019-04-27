@@ -52,6 +52,19 @@ public class HomeController {
         return "login/homeLayout";
     }
 
+    @PostMapping("/home")
+    public String postHome(Model model) {
+
+        List<Article> articleList = articleService.selectMany();
+        int count = articleService.count();
+
+        model.addAttribute("articles", articleList);
+        model.addAttribute("count", count);
+        model.addAttribute("contents", "login/home :: home_contents");
+
+        return "login/homeLayout";
+    }
+
     @PostMapping("/logout")
     public String postLogout(){
 
