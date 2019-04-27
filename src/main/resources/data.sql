@@ -8,11 +8,11 @@ VALUES ('tamura@xxx.co.jp', '$2a$10$xRTXvpMWly0oGiu65WZlm.3YL95LGVV2ASFjDhe6WF4.
 INSERT INTO articles(id, user_id, title, content)
 VALUES(1, 'tanaka@xxx.co.jp', 'TEST1', 'テストデータ1');
 INSERT INTO articles(id, user_id, title, content)
-VALUES(2, 'tanaka@xxx.co.jp', 'TEST3', 'テストデータ3');
+VALUES(2, 'tanaka@xxx.co.jp', 'TEST2', 'テストデータ3');
 INSERT INTO articles(id, user_id, title, content)
-VALUES(3, 'tanaka@xxx.co.jp', 'TEST4', 'テストデータ4');
+VALUES(3, 'tanaka@xxx.co.jp', 'TEST3', 'テストデータ4');
 INSERT INTO articles(id, user_id, title, content)
-VALUES(4, 'tanaka@xxx.co.jp', 'TEST2', 'テストデータ2');
+VALUES(4, 'tanaka@xxx.co.jp', 'TEST4', 'テストデータ2');
 INSERT INTO articles(id, user_id, title, content)
 VALUES(5, 'tamura@xxx.co.jp', 'TEST5', 'テストデータ5');
 INSERT INTO articles(id, user_id, title, content)
