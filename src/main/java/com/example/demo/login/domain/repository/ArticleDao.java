@@ -12,7 +12,7 @@ public interface ArticleDao {
 
     public int insertOne(Article article) throws DataAccessException;
 
-    public Article selectOne(int id) throws DataAccessException;
+    public Article selectOne(Long id) throws DataAccessException;
 
     public List<Article> selectMany() throws DataAccessException;
 

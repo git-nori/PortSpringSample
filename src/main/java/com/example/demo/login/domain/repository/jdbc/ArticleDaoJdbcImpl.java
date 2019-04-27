@@ -41,7 +41,7 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
     }
 
     @Override
-    public Article selectOne(int id) throws DataAccessException {
+    public Article selectOne(Long id) throws DataAccessException {
         String sql = "SELECT * FROM articles WHERE id = ?";
         RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
         return jdbc.queryForObject(sql, rowMapper, id);

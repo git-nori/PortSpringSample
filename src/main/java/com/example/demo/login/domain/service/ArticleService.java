@@ -37,7 +37,7 @@ public class ArticleService {
         return dao.selectMany();
     }
 
-    public Article selectOne(int id) {
+    public Article selectOne(Long id) {
         return dao.selectOne(id);
     }
 
