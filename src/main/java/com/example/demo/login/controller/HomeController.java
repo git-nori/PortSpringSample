@@ -58,20 +58,6 @@ public class HomeController {
         return "/login/login";
     }
 
-    @GetMapping("/articleDetail/{id}")
-    public String getArticleDetail(Model model, @PathVariable("id") Integer articleId){
-      System.out.println(articleId);
-
-      model.addAttribute("contents", "login/articleDetail :: articleDetail_contents");
-
-      if (articleId != null){
-        Article article = articleService.selectOne(articleId);
-
-        model.addAttribute("article", article);
-      }
-
-      return "login/homeLayout";
-    }
     @GetMapping("/userList")
     public String getUserList(Model model) {
         List<User> userList = userService.selectMany();
