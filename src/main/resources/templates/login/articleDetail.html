@@ -6,18 +6,18 @@
 	</head>
 	<body>
 		<div th:fragment="articleDetail_contents">
-			<h1>記事詳細画面</h1>
-			<form method="post" th:action="@{/articleDetail}" th:object="${article}">
-				<h2 th:field="*{title}">title</h2>
+			<div th:object="${article}">
+				<h1>記事詳細画面</h1>
+				<h2 th:text="*{title}">title</h2>
 				<br />
 				<p th:text="*{content}">content</p>
 				<br /><br />
 
-				<p th:text="*{id}">id</p>
-			</form>
-			<form method="post" action="@{'/articleEdit/' + ${article.id}}">
-				<button type="submit">編集</button>
-			</form>
+				<p th:text="'記事ID : ' + *{id}">id</p>
+				<a th:href="@{'/articleEdit/' + *{id}}">
+					<button type="submit">編集</button>
+				</a>
+			</div>
 		</div>
 	</body>
 </html>
