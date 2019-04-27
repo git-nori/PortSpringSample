@@ -16,7 +16,7 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("/articleDetail/{id}")
-    public String getArticleDetail(Model model, @PathVariable("id") Integer articleId){
+    public String getArticleDetail(Model model, @PathVariable("id") Long articleId){
       System.out.println(articleId);
 
       model.addAttribute("contents", "login/articleDetail :: articleDetail_contents");
