@@ -54,7 +54,7 @@ public class ArticleService {
         return result;
     }
 
-    public boolean delete(int id) {
+    public boolean delete(Long id) {
 
         int rowNumber = dao.deleteOne(id);
 

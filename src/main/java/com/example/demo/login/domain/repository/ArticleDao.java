@@ -18,5 +18,5 @@ public interface ArticleDao {
 
     public int updateOne(Article article) throws DataAccessException;
 
-    public int deleteOne(int id) throws DataAccessException;
+    public int deleteOne(Long id) throws DataAccessException;
 }

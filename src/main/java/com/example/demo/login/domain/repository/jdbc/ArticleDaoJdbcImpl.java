@@ -69,7 +69,7 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
     }
 
     @Override
-    public int deleteOne(int id) throws DataAccessException {
+    public int deleteOne(Long id) throws DataAccessException {
         String sql = "DELETE FROM articles WHERE id = ?";
         int rowNumber = jdbc.update(sql, id);
         return rowNumber;
