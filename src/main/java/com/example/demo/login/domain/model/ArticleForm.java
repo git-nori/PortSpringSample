@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class ArticleForm {
 
-    private int id;
+    private Long id;
     private String userId;
     @NotBlank
     @Length(min=1, max=30)
