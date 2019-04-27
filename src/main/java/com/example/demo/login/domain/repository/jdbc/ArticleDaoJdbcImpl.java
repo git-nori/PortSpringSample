@@ -57,11 +57,14 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
     @Override
     public int updateOne(Article article) throws DataAccessException {
         String sql = "UPDATE articles SET"
-                + "title = ?,"
+                + " title = ?,"
                 + " content = ?"
                 + " WHERE id = ?";
 
-        int rowNumber = jdbc.update(sql, article.getId());
+        int rowNumber = jdbc.update(sql
+                , article.getTitle()
+                , article.getContent()
+                , article.getId());
         return rowNumber;
     }
 
