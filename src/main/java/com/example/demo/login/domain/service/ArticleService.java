@@ -66,4 +66,8 @@ public class ArticleService {
 
         return result;
     }
+
+    public Article selectDistinctUserIdByUserId(String userId) {
+        return dao.selectDistinctUserIdByUserId(userId);
+    }
 }

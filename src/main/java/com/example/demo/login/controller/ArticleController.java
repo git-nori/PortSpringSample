@@ -30,7 +30,7 @@ public class ArticleController {
         model.addAttribute("contents", "login/articleNew :: article_new_contents");
 
         if (UserId != null && UserId.length() > 0){
-            Article article = articleService.selectOneByUserId(UserId);
+            Article article = articleService.selectDistinctUserIdByUserId(UserId);
 
             form.setUserId(article.getUserId());
 

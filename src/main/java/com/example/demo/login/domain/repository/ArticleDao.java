@@ -19,4 +19,6 @@ public interface ArticleDao {
     public int updateOne(Article article) throws DataAccessException;
 
     public int deleteOne(Long id) throws DataAccessException;
+
+    Article selectDistinctUserIdByUserId(String userId) throws DataAccessException;
 }

@@ -75,4 +75,11 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
         return rowNumber;
     }
 
+    @Override
+    public Article selectDistinctUserIdByUserId(String userId) throws DataAccessException {
+        String sql = "SELECT DISTINCT(user_id) FROM articles WHERE user_id = ?";
+        RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
+        return jdbc.queryForObject(sql, rowMapper, userId);
+    }
+
 }
