@@ -82,4 +82,14 @@ public class ArticleDaoJdbcImpl implements ArticleDao{
         return jdbc.queryForObject(sql, rowMapper, userId);
     }
 
+    @Override
+    public Article selectOneJoinMUserByUserId(Long id) throws DataAccessException {
+        String sql = "SELECT a.id, a.user_id, a.title, a.content, m.user_name"
+                + " FROM articles a"
+                + " JOIN m_user m ON a.user_id = m.user_id"
+                + " WHERE a.id = ?";
+        RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
+        return jdbc.queryForObject(sql, rowMapper, id);
+    }
+
 }
