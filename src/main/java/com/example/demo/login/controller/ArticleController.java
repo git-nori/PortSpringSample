@@ -2,8 +2,10 @@ package com.example.demo.login.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,49 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+
+    @GetMapping("/articleNew")
+    public String getArticleNew(@ModelAttribute ArticleForm form, Model model, Authentication authentication){
+        System.out.println("記事新規作成");
+
+        String UserId = authentication.getName();
+
+        model.addAttribute("contents", "login/articleNew :: article_new_contents");
+
+        if (UserId != null && UserId.length() > 0){
+            Article article = articleService.selectOneByUserId(UserId);
+
+            form.setUserId(article.getUserId());
+
+            model.addAttribute("articleForm", form);
+        }
+
+        return "login/homeLayout";
+    }
+
+    @PostMapping("/articleNew")
+    public String postArticleNew(@ModelAttribute ArticleForm form, Authentication authentication, BindingResult bindingResult, Model model){
+
+        if (bindingResult.hasErrors()){
+            return getArticleNew(form, model, authentication);
+        }
+
+        Article article = new Article();
+
+        article.setUserId(form.getUserId());
+        article.setTitle(form.getTitle());
+        article.setContent(form.getContent());
+
+        boolean result = articleService.insert(article);
+
+        if (result == true){
+            model.addAttribute("result", "更新成功");
+        } else {
+            model.addAttribute("result", "更新失敗");
+        }
+
+        return "forward:/home";
+    }
 
     @GetMapping("/articleDetail/{id}")
     public String getArticleDetail(Model model, @PathVariable("id") Long articleId){
