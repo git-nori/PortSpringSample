@@ -14,6 +14,7 @@
 				<br /><br />
 
 				<p th:text="'記事ID : ' + *{id}">id</p>
+				<p th:text="'投稿ユーザー : ' + *{userName}">userName</p>
 				<a th:href="@{'/articleEdit/' + *{id}}">
 					<button type="submit">編集</button>
 				</a>

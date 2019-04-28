@@ -70,4 +70,8 @@ public class ArticleService {
     public Article selectDistinctUserIdByUserId(String userId) {
         return dao.selectDistinctUserIdByUserId(userId);
     }
+
+    public Article selectOneJoinMUserByUserId(Long id) {
+        return dao.selectOneJoinMUserByUserId(id);
+    }
 }

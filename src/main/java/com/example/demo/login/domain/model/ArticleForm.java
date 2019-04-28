@@ -11,6 +11,7 @@ public class ArticleForm {
 
     private Long id;
     private String userId;
+    private String userName;
     @NotBlank
     @Length(min=1, max=30)
     private String title;
