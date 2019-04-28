@@ -5,32 +5,34 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<h1>記事投稿画面</h1>
-		<form method="post" th:action="@{/articleNew}" th:object="${articleForm}">
-			<table>
-				<tr>
-					<th>ユーザーID</th>
-					<td>
-						<p th:field="*{user_id}"></p>
-					</td>
-				</tr>
-				<tr>
-					<th>タイトル</th>
-					<td>
-						<input type="text" th:field="*{title}" />
-						<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
-					</td>
-				</tr>
-				<tr>
-					<th>本文</th>
-					<td>
-						<textarea cols="100" rows="30" th:field="*{content}"></textarea>
-						<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
-					</td>
-				</tr>
-			</table>
-			<br />
-			<button type="submit">新規投稿</button>
-		</form>
+		<div th:fragment="article_new_contents">
+			<h1>記事投稿画面</h1>
+			<form method="post" th:action="@{/articleNew}" th:object="${articleForm}">
+				<table>
+					<tr>
+						<th>ユーザーID</th>
+						<td>
+							<input type="text" th:field="*{userId}" readonly="readonly"></input>
+						</td>
+					</tr>
+					<tr>
+						<th>タイトル</th>
+						<td>
+							<input type="text" th:field="*{title}" />
+							<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
+						</td>
+					</tr>
+					<tr>
+						<th>本文</th>
+						<td>
+							<textarea cols="100" rows="30" th:field="*{content}"></textarea>
+							<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
+						</td>
+					</tr>
+				</table>
+				<br />
+				<button type="submit">新規投稿</button>
+			</form>
+		</div>
 	</body>
 </html>
