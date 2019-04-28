@@ -71,7 +71,7 @@ public class ArticleController {
       model.addAttribute("contents", "login/articleDetail :: articleDetail_contents");
 
       if (articleId != null){
-        Article article = articleService.selectOne(articleId);
+        Article article = articleService.selectOneJoinMUserByUserId(articleId);//m_userテーブルとの結合結果を取得
 
         model.addAttribute("article", article);
       }
