@@ -7,39 +7,52 @@
 	</head>
 	<body>
 		<div th:fragment="articleEdit_contents">
-			<h1>記事編集画面</h1>
-			<form method="post" th:action="@{/articleEdit}" th:object="${articleForm}">
-				<table>
-					<tr>
-						<th>ID</th>
-						<td>
-							<input type="text" th:field="*{id}" readonly="readonly" />
-						</td>
-					<tr>
-						<th>ユーザーID</th>
-						<td>
-							<input type="text" th:field="*{userId}" readonly="readonly" />
-						</td>
-					</tr>
-					<tr>
-						<th>タイトル</th>
-						<td>
-							<input type="text" th:field="*{title}" />
-							<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
-						</td>
-					</tr>
-					<tr>
-						<th>本文</th>
-						<td>
-							<textarea cols="100" rows="30" th:field="*{content}"></textarea>
-							<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
-						</td>
-					</tr>
-				</table><br />
+			<div class="row">
+				<div class="col-sm-5">
+					<h2 class="page-header">記事編集画面</h2>
+					<form method="post" th:action="@{/articleEdit}" th:object="${articleForm}">
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th class="info col-sm-2">ID</th>
+								<td class="col-sm-3">
+									<div class="form-group">
+										<input class="form-control" type="text" th:field="*{id}" readonly="readonly" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">ユーザーID</th>
+								<td class="col-sm-3">
+									<div class="form-group">
+										<input class="form-control" type="text" th:field="*{userId}" readonly="readonly" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">タイトル</th>
+								<td class="col-sm-3">
+									<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? 'has-error'">
+										<input class="form-control" type="text" th:field="*{title}" />
+										<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">本文</th>
+								<td class="col-sm-3">
+									<div class="form-group" th:classappend="${#fields.hasErrors('content')} ? 'has-error'">
+										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
+										<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
+									</div>
+								</td>
+							</tr>
+						</table><br />
 
-				<button type="submit" name="update">更新</button>
-				<button type="submit" name="delete" sec:authorize="hasRole('ROLE_ADMIN')">削除</button>
-			</form>
+						<button class="btn btn-primary" type="submit" name="update">更新</button>
+						<button class="btn btn-danger pull-right" type="submit" name="delete" sec:authorize="hasRole('ROLE_ADMIN')">削除</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
