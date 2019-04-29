@@ -41,9 +41,7 @@
 							<tr>
 								<th class="info col-sm-2">本文</th>
 								<td class="col-sm-8">
-									<div class="form-group" th:classappend="${#fields.hasErrors('content')} ? 'has-error'">
-										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
-									</div>
+									<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
 								</td>
 							</tr>
 						</table><br />
