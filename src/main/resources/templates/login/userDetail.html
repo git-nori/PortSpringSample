@@ -7,13 +7,13 @@
 	<body>
 		<div th:fragment="userDetail_contents">
 			<div class="row">
-				<div class="col-sm-5">
+				<div class="col-sm-10">
 					<h2 class="page-header">ユーザー詳細</h2>
 					<form method="post" th:action="@{/userDetail}" th:object="${signupForm}">
 						<table class="table table-bordered table-hover">
 							<tr>
 								<th class="info col-sm-2">ユーザーID</th>
-								<td class="col-sm-3">
+								<td class="col-sm-8">
 									<div class="form-group">
 										<input class="form-control" type="text" th:field="*{userId}" readonly="readonly" />
 									</div>
@@ -21,7 +21,7 @@
 							</tr>
 							<tr>
 								<th class="info col-sm-2">パスワード</th>
-								<td class="col-sm-3">
+								<td class="col-sm-8">
 									<div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
 										<input class="form-control" type="text" th:field="*{password}" />
 										<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
@@ -30,7 +30,7 @@
 							</tr>
 							<tr>
 								<th class="info col-sm-2">ユーザー名</th>
-								<td class="col-sm-3">
+								<td class="col-sm-8">
 									<div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error'">
 										<input class="form-control" type="text" th:field="*{userName}" />
 										<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
@@ -39,7 +39,7 @@
 							</tr>
 							<tr>
 								<th class="info col-sm-2">性別</th>
-								<td class="col-sm-3">
+								<td class="col-sm-8">
 									<div class="form-group" th:classappend="${#fields.hasErrors('gender')} ? 'has-error'">
 										<div th:each="item : ${radioGender}">
 											<input type="radio" name="radioGender" th:field="*{gender}" th:text="${item.key}" th:value="${item.value}" />
