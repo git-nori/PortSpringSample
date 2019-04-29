@@ -12,8 +12,9 @@ public class ArticleForm {
     private Long id;
     private String userId;
     private String userName;
-    @NotBlank
-    @Length(min=1, max=30)
+
+    @NotBlank(groups = ValidGroup1.class)
+    @Length(min=1, max=30, groups = ValidGroup2.class)
     private String title;
     private String content;
 }
