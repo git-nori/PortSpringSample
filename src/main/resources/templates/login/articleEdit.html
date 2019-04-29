@@ -33,6 +33,7 @@
 								<td class="col-sm-8">
 									<div class="form-group" th:classappend="${#fields.hasErrors('title')} ? 'has-error'">
 										<input class="form-control" type="text" th:field="*{title}" />
+										<br />
 										<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
 									</div>
 								</td>
@@ -42,12 +43,10 @@
 								<td class="col-sm-8">
 									<div class="form-group" th:classappend="${#fields.hasErrors('content')} ? 'has-error'">
 										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
-										<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
 									</div>
 								</td>
 							</tr>
 						</table><br />
-
 						<button class="btn btn-primary" type="submit" name="update">更新</button>
 						<button class="btn btn-danger pull-right" type="submit" name="delete" sec:authorize="hasRole('ROLE_ADMIN')">削除</button>
 					</form>

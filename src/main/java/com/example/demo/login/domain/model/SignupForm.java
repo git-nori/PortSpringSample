@@ -1,6 +1,5 @@
 package com.example.demo.login.domain.model;
 
-import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -12,18 +11,17 @@ import lombok.Data;
 @Data
 public class SignupForm {
 
-    @NotBlank
-    @Email
+    @NotBlank(groups = ValidGroup1.class)
+    @Email(groups = ValidGroup2.class)
     private String userId;
 
-    @NotBlank
-    @Length(min= 4, max = 10)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @NotBlank(groups = ValidGroup1.class)
+    @Length(min= 4, max = 10, groups = ValidGroup2.class)
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", groups = ValidGroup3.class)
     private String password;
 
-    @NotBlank
+    @NotBlank(groups = ValidGroup1.class)
     private String userName;
 
-    @AssertFalse
     private boolean gender;
 }

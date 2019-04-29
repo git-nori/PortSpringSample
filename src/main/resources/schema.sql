@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS articles(
   title VARCHAR(30),
   content TEXT,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES m_user (user_id)
+  FOREIGN KEY (user_id) REFERENCES m_user (user_id) ON DELETE CASCADE
 );

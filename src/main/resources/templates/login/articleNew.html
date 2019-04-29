@@ -24,6 +24,7 @@
 								<td class="col-sm-8">
 									<div class="form-group">
 										<input class="form-control" type="text" th:field="*{title}" />
+										<br />
 										<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
 									</div>
 								</td>
@@ -33,7 +34,6 @@
 								<td class="col-sm-8">
 									<div class="form-group">
 										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
-										<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
 									</div>
 								</td>
 							</tr>

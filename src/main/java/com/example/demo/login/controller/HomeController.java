@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.login.domain.model.Article;
+import com.example.demo.login.domain.model.GroupOrder;
 import com.example.demo.login.domain.model.SignupForm;
 import com.example.demo.login.domain.model.User;
 import com.example.demo.login.domain.service.ArticleService;
@@ -106,7 +109,12 @@ public class HomeController {
     }
 
     @PostMapping(value = "/userDetail", params="update")
-    public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model) {
+    public String postUserDetailUpdate(@ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult, Model model) {
+
+        if(bindingResult.hasErrors()) {
+            return getUserDetail(form, model, form.getUserId());
+        }
+
         System.out.println("更新処理");
 
         User user = new User();
