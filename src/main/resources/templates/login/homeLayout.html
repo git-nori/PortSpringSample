@@ -20,8 +20,8 @@
 					<a class="navbar-brand" href="#">SpringSample</a>
 					<a class="navbar-brand" th:href="@{'/articleNew/'}">新規投稿</a>
 					<a class="navbar-brand" th:href="@{'/home'}">記事一覧</a>
-					<a class="navbar-brand" th:href="@{'/userList'}">ユーザー一覧</a>
-					<a class="navbar-brand" th:href="@{'/admin'}">管理者用画面</a>
+					<a class="navbar-brand" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{'/userList'}">ユーザー一覧</a>
+					<a class="navbar-brand" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{'/admin'}">管理者用画面</a>
 				</div>
 				<form method="post" th:action="@{/logout}">
 					<button class="btn btn-link pull-right navbar-brand" type="submit">Logout</button>
