@@ -16,7 +16,7 @@
 		<ul>
 			<li role="presentation"><a th:href="@{'/articleNew/'}">新規投稿</a></li>
 			<li role="presentation"><a th:href="@{'/home'}">記事一覧</a></li>
-			<li role="presentation"><a th:href="@{'/userList'}">ユーザー一覧</a></li>
+			<li role="presentation" sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/userList'}">ユーザー一覧</a></li>
 			<li role="presentation" sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/admin'}">管理者用画面</a></li>
 		</ul>
 		<div th:include="__${contents}__"></div>
