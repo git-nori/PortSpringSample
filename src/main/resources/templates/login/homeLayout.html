@@ -3,22 +3,38 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8"></meta>
+
+		<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+		<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+		<link th:href="@{/css/home.css}" rel="stylesheet"></link>
+
 		<title>Home</title>
 	</head>
 	<body>
-		<header>
-			<a href="#">SpringSample</a>
-			<form method="post" th:action="@{/logout}">
-				<button type="submit">ログアウト</button>
-			</form>
-		</header>
-		<ul>
-			<li role="presentation"><a th:href="@{'/articleNew/'}">新規投稿</a></li>
-			<li role="presentation"><a th:href="@{'/home'}">記事一覧</a></li>
-			<li role="presentation"><a th:href="@{'/userList'}">ユーザー一覧</a></li>
-			<li role="presentation" sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/admin'}">管理者用画面</a></li>
-		</ul>
-		<div th:include="__${contents}__"></div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">SpringSample</a>
+					<a class="navbar-brand" th:href="@{'/articleNew/'}">新規投稿</a>
+					<a class="navbar-brand" th:href="@{'/home'}">記事一覧</a>
+					<a class="navbar-brand" th:href="@{'/userList'}">ユーザー一覧</a>
+					<a class="navbar-brand" th:href="@{'/admin'}">管理者用画面</a>
+				</div>
+				<form method="post" th:action="@{/logout}">
+					<button class="btn btn-link pull-right navbar-brand" type="submit">Logout</button>
+				</form>
+			</div>
+		</nav><br /><br /><br /><!-- header -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-2 main">
+					<div th:include="__${contents}__">
+					</div>
+				</div>
+			</div>
+		</div><!-- main -->
 	</body>
 </html>
