@@ -6,16 +6,20 @@
 	</head>
 	<body>
 		<div th:fragment="home_contents">
-			<h1>記事一覧</h1>
-			<ol>
-				<li th:each="article : ${articles}">
-					<h3>
-						<a th:text="${article.title}" th:href="@{'/articleDetail/' + ${article.id}}">Title</a><br />
-					</h3>
-				</li>
-			</ol>
-			<label th:text="'総記事件数 : ' + ${count} + '件'"></label><br />
-			<p th:text="${result}"></p>
+			<div class="row">
+				<div class="col-sm-10">
+					<h2 class="page-header">記事一覧</h2>
+					<div class="list-group">
+						<div th:each="article : ${articles}">
+							<h3>
+								<a class="list-group-item" th:text="${article.title}" th:href="@{'/articleDetail/' + ${article.id}}">Title</a>
+							</h3>
+						</div>
+					</div>
+					<label th:text="'総記事件数 : ' + ${count} + '件'"></label><br />
+					<label class="text-info" th:text="${result}"></label>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

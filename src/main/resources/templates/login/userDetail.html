@@ -6,43 +6,55 @@
 	</head>
 	<body>
 		<div th:fragment="userDetail_contents">
-			<h1>ユーザー詳細</h1>
-			<form method="post" th:action="@{/userDetail}" th:object="${signupForm}">
-				<table>
-					<tr>
-						<th>ユーザーID</th>
-						<td>
-							<input type="text" th:field="*{userId}" readonly="readonly" />
-						</td>
-					</tr>
-					<tr>
-						<th>パスワード</th>
-						<td>
-							<input type="text" th:field="*{password}" />
-							<br />
-							<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
-						</td>
-					</tr>
-					<tr>
-						<th>ユーザー名</th>
-						<td>
-							<input type="text" th:field="*{userName}" />
-							<br />
-							<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
-						</td>
-					</tr>
-					<tr>
-						<th>性別</th>
-						<td>
-							<div th:each="item : ${radioGender}">
-								<input type="radio" name="radioGender" th:field="*{gender}" th:text="${item.key}" th:value="${item.value}" />
-							</div>
-						</td>
-					</tr>
-				</table>
-				<button type="submit" name="update">更新</button>
-				<button type="submit" name="delete">削除</button>
-			</form>
+			<div class="row">
+				<div class="col-sm-10">
+					<h2 class="page-header">ユーザー詳細</h2>
+					<form method="post" th:action="@{/userDetail}" th:object="${signupForm}">
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th class="info col-sm-2">ユーザーID</th>
+								<td class="col-sm-8">
+									<div class="form-group">
+										<input class="form-control" type="text" th:field="*{userId}" readonly="readonly" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">パスワード</th>
+								<td class="col-sm-8">
+									<div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+										<input class="form-control" type="text" th:field="*{password}" />
+										<br />
+										<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">ユーザー名</th>
+								<td class="col-sm-8">
+									<div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error'">
+										<input class="form-control" type="text" th:field="*{userName}" />
+										<br />
+										<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">性別</th>
+								<td class="col-sm-8">
+									<div class="form-group" th:classappend="${#fields.hasErrors('gender')} ? 'has-error'">
+										<div th:each="item : ${radioGender}">
+											<input type="radio" name="radioGender" th:field="*{gender}" th:text="${item.key}" th:value="${item.value}" />
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<button class="btn btn-primary" type="submit" name="update">更新</button>
+						<button class="btn btn-danger pull-right" type="submit" name="delete">削除</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8"></meta>
+
+		<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+		<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
 		<title>SignUp</title>
 	</head>
 	<body>
-		<h1>ユーザー登録画面</h1>
-		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
-			<table>
-				<tr>
-					<th>ユーザーID</th>
-					<td>
-						<input type="text" th:field="*{userId}" />
-						<br />
-						<span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">userId error</span>
-					</td>
-				</tr>
-				<tr>
-					<th>パスワード</th>
-					<td>
-						<input type="text" th:field="*{password}" />
-						<br />
-						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
-					</td>
-				</tr>
-				<tr>
-					<th>ユーザー名</th>
-					<td>
-						<input type="text" th:field="*{userName}" />
-						<br />
-						<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
-					</td>
-				</tr>
-				<tr>
-					<th>性別</th>
-					<td>
-						<div th:each="item : ${radioGender}">
-							<input type="radio" name="radioGender" th:text="${item.key}" th:value="${item.value}" th:field="*{gender}" />
-						</div>
-					</td>
-				</tr>
-			</table>
-			<button type="submit">ユーザー登録</button>
-		</form>
+		<div class="col-sm-5">
+			<h2 class="page-header">ユーザー登録画面</h2>
+			<form method="post" th:action="@{/signup}" th:object="${signupForm}">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th class="info col-sm-3">ユーザーID</th>
+						<td>
+							<div class="form-group" th:classappend="${#fields.hasErrors('userId')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{userId}" />
+								<span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">userId error</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="info">パスワード</th>
+						<td>
+							<div class="form-group" th:classappend="${#fields.hasErrors('password')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{password}" />
+								<span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="info col-sm-3">ユーザー名</th>
+						<td>
+							<div class="form-group" th:classappend="${#fields.hasErrors('userName')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{userName}" />
+								<span class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="info col-sm-3">性別</th>
+						<td>
+							<div class="form-group" th:classappend="${#fields.hasErrors('userName')}?'has-error'">
+								<div th:each="item : ${radioGender}">
+									<input type="radio" name="radioGender" th:text="${item.key}" th:value="${item.value}" th:field="*{gender}" />
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<button class="btn btn-primary" type="submit">ユーザー登録</button>
+			</form>
+		</div>
 	</body>
 </html>
+

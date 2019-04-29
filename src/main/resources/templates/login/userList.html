@@ -6,24 +6,29 @@
 	</head>
 	<body>
 		<div th:fragment="userList_contents">
-			<h1>ユーザー一覧</h1>
-			<table>
-				<tr>
-					<th>ユーザーID</th>
-					<th>ユーザー名</th>
-					<th>性別</th>
-				</tr>
-				<tr th:each="user : ${userList}">
-					<td th:text="${user.userId}"></td>
-					<td th:text="${user.userName}"></td>
-					<td th:text="${user.gender} ? '男性' : '女性'"></td>
-					<td>
-						<a th:href="@{'/userDetail/' + ${user.userId}}">詳細</a>
-					</td>
-				</tr>
-			</table>
-			<label th:text="'合計 : ' + ${userListCount} + '件'"></label><br /><br />
-			<label th:text="${result}">結果表示</label>
+			<div class="row">
+				<div class="col-sm-10">
+					<h2 class="page-header">ユーザー一覧</h2>
+					<table class="table table-bordered table-hover table-striped">
+						<tr>
+							<th class="info col-sm-2">ユーザーID</th>
+							<th class="info col-sm-2">ユーザー名</th>
+							<th class="info col-sm-2">性別</th>
+							<th class="info col-sm-2"></th>
+						</tr>
+						<tr th:each="user : ${userList}">
+							<td th:text="${user.userId}"></td>
+							<td th:text="${user.userName}"></td>
+							<td th:text="${user.gender} ? '男性' : '女性'"></td>
+							<td>
+								<a class="btn btn-primary" th:href="@{'/userDetail/' + ${user.userId}}">詳細</a>
+							</td>
+						</tr>
+					</table>
+					<label th:text="'合計 : ' + ${userListCount} + '件'"></label><br /><br />
+					<label class="text-info" th:text="${result}">結果表示</label>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

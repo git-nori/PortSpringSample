@@ -6,19 +6,24 @@
 	</head>
 	<body>
 		<div th:fragment="articleDetail_contents">
-			<div th:object="${article}">
-				<h1>記事詳細画面</h1>
-				<h2 th:text="*{title}">title</h2>
-				<br />
-				<p th:text="*{content}">content</p>
-				<br /><br />
+			<div class="row">
+				<div class="col-sm-10">
+					<div th:object="${article}">
+						<h2 class="page-header">記事詳細画面</h2>
+						<h2 th:text="*{title}">title</h2>
+						<br />
+						<p th:text="*{content}">content</p><hr />
 
-				<p th:text="'記事ID : ' + *{id}">id</p>
-				<p th:text="'投稿ユーザー : ' + *{userName}">userName</p>
-				<a th:href="@{'/articleEdit/' + *{id}}">
-					<button type="submit">編集</button>
-				</a>
-				<p th:text="${result}">更新、削除結果</p>
+						<p th:text="'記事ID : ' + *{id}">id</p>
+						<p th:text="'投稿ユーザー : ' + *{userName}">userName</p>
+						<a th:href="@{'/articleEdit/' + *{id}}">
+							<button class="btn btn-primary" type="submit" name="update">編集</button>
+						</a>
+						<br /><br />
+
+						<label class="text-info" th:text="${result}">更新結果</label>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

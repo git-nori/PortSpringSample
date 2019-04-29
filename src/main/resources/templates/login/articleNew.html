@@ -6,32 +6,42 @@
 	</head>
 	<body>
 		<div th:fragment="article_new_contents">
-			<h1>記事投稿画面</h1>
-			<form method="post" th:action="@{/articleNew}" th:object="${articleForm}">
-				<table>
-					<tr>
-						<th>ユーザーID</th>
-						<td>
-							<input type="text" th:field="*{userId}" readonly="readonly"></input>
-						</td>
-					</tr>
-					<tr>
-						<th>タイトル</th>
-						<td>
-							<input type="text" th:field="*{title}" />
-							<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
-						</td>
-					</tr>
-					<tr>
-						<th>本文</th>
-						<td>
-							<textarea cols="100" rows="30" th:field="*{content}"></textarea>
-						</td>
-					</tr>
-				</table>
-				<br />
-				<button type="submit">新規投稿</button>
-			</form>
+			<div class="row">
+				<div class="col-sm-10">
+					<h2 class="page-header">記事投稿画面</h2>
+					<form method="post" th:action="@{/articleNew}" th:object="${articleForm}">
+						<table class="table table-bordered table-hover">
+							<tr>
+								<th class="info col-sm-2">ユーザーID</th>
+								<td class="col-sm-8">
+									<div class="form-group">
+										<input class="form-control" type="text" th:field="*{userId}" readonly="readonly"></input>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">タイトル</th>
+								<td class="col-sm-8">
+									<div class="form-group">
+										<input class="form-control" type="text" th:field="*{title}" />
+										<br />
+										<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">本文</th>
+								<td class="col-sm-8">
+									<div class="form-group">
+										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<button class="btn btn-primary" type="submit">新規投稿</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
