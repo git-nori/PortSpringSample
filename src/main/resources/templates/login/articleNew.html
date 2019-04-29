@@ -12,7 +12,7 @@
 					<form method="post" th:action="@{/articleNew}" th:object="${articleForm}">
 						<table class="table table-bordered table-hover">
 							<tr>
-								<th class="col-sm-2">ユーザーID</th>
+								<th class="info col-sm-2">ユーザーID</th>
 								<td class="col-sm-3">
 									<div class="form-group">
 										<input class="form-control" type="text" th:field="*{userId}" readonly="readonly"></input>
@@ -20,7 +20,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th class="col-sm-2">タイトル</th>
+								<th class="info col-sm-2">タイトル</th>
 								<td class="col-sm-3">
 									<div class="form-group">
 										<input class="form-control" type="text" th:field="*{title}" />
@@ -29,7 +29,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th class="col-sm-2">本文</th>
+								<th class="info col-sm-2">本文</th>
 								<td class="col-sm-3">
 									<div class="form-group">
 										<textarea class="form-control" rows="30" th:field="*{content}"></textarea>
