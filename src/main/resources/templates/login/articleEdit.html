@@ -25,6 +25,7 @@
 						<th>タイトル</th>
 						<td>
 							<input type="text" th:field="*{title}" />
+							<br />
 							<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title error</span>
 						</td>
 					</tr>
@@ -32,7 +33,6 @@
 						<th>本文</th>
 						<td>
 							<textarea cols="100" rows="30" th:field="*{content}"></textarea>
-							<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}">content error</span>
 						</td>
 					</tr>
 				</table><br />

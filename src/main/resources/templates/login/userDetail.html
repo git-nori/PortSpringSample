@@ -19,6 +19,7 @@
 						<th>パスワード</th>
 						<td>
 							<input type="text" th:field="*{password}" />
+							<br />
 							<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
 						</td>
 					</tr>
@@ -26,6 +27,7 @@
 						<th>ユーザー名</th>
 						<td>
 							<input type="text" th:field="*{userName}" />
+							<br />
 							<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">userName error</span>
 						</td>
 					</tr>
@@ -35,7 +37,6 @@
 							<div th:each="item : ${radioGender}">
 								<input type="radio" name="radioGender" th:field="*{gender}" th:text="${item.key}" th:value="${item.value}" />
 							</div>
-							<span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">gender error</span>
 						</td>
 					</tr>
 				</table>
