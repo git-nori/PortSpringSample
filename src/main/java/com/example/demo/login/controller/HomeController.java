@@ -123,7 +123,14 @@ public class HomeController {
         user.setPassword(form.getPassword());
         user.setUserName(form.getUserName());
         user.setGender(form.isGender());
-
+//        user.getUserImage();
+/*
+        try {
+            System.out.println(form.getUserImage().getBytes());
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+*/
         try {
             boolean result = userService.updateOne(user);
 
