@@ -9,5 +9,6 @@ public class User {
     private String password;
     private String userName;
     private boolean gender;
+    private byte[] userImage;
     private String role;
 }

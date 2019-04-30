@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -24,4 +25,14 @@ public class SignupForm {
     private String userName;
 
     private boolean gender;
+
+    private MultipartFile userImage;
+
+    public MultipartFile getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(MultipartFile userImage) {
+        this.userImage = userImage;
+    }
 }
