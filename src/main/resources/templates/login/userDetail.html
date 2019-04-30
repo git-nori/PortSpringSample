@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-sm-10">
 					<h2 class="page-header">ユーザー詳細</h2>
-					<form method="post" th:action="@{/userDetail}" th:object="${signupForm}">
+					<form method="post" enctype="multipart/form-data" th:action="@{/userDetail}" th:object="${signupForm}">
 						<table class="table table-bordered table-hover">
 							<tr>
 								<th class="info col-sm-2">ユーザーID</th>
@@ -46,6 +46,14 @@
 										<div th:each="item : ${radioGender}">
 											<input type="radio" name="radioGender" th:field="*{gender}" th:text="${item.key}" th:value="${item.value}" />
 										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="info col-sm-2">プロフィール画像</th>
+								<td class="col-sm-8">
+									<div class="form-group">
+										<input id="userImage" type="file" />
 									</div>
 								</td>
 							</tr>
