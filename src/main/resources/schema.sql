@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS m_user(
 	password VARCHAR(100),
 	user_name VARCHAR(50),
 	gender BOOLEAN,
+	user_image BLOB,
 	role VARCHAR(50)
 );
 
