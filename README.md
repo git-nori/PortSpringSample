@@ -1,1 +1,1 @@
-# ポートフォリオ用サンプロプロジェクト
+# PortfolioSpringSample
