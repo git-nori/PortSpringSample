@@ -1,1 +1,1 @@
-# Portfolio用SpringSampleプロジェクト
+# SampleProjrctForPortfolio
